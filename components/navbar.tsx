@@ -24,6 +24,8 @@ import {
   HeartFilledIcon,
   SearchIcon,
   Logo,
+  CartIcon,
+  ProfileIcon
 } from "@/components/icons";
 
 export const Navbar = () => {
@@ -51,19 +53,20 @@ export const Navbar = () => {
   return (
     <NextUINavbar maxWidth="xl" position="sticky">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
+      <NavbarMenuToggle className="md:hidden basis-1 pl-4" />
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-1" href="/">
             <Logo />
             <p className="font-bold text-inherit">ACME</p>
           </NextLink>
         </NavbarBrand>
-        <ul className="hidden lg:flex gap-4 justify-start ml-2">
+        <ul className="hidden md:flex gap-4 justify-start ml-2">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
               <NextLink
                 className={clsx(
                   linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium",
+                  "data-[active=true]:text-primary data-[active=true]:font-medium"
                 )}
                 color="foreground"
                 href={item.href}
@@ -79,20 +82,15 @@ export const Navbar = () => {
         className="hidden sm:flex basis-1/5 sm:basis-full"
         justify="end"
       >
-        <NavbarItem className="hidden sm:flex gap-2">
-          <Link isExternal aria-label="Twitter" href={siteConfig.links.twitter}>
-            <TwitterIcon className="text-default-500" />
-          </Link>
-          <Link isExternal aria-label="Discord" href={siteConfig.links.discord}>
-            <DiscordIcon className="text-default-500" />
-          </Link>
-          <Link isExternal aria-label="Github" href={siteConfig.links.github}>
-            <GithubIcon className="text-default-500" />
-          </Link>
-          <ThemeSwitch />
-        </NavbarItem>
-        <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
-        <NavbarItem className="hidden md:flex">
+        <NavbarItem className="hidden md:flex">{searchInput}</NavbarItem>
+        <ThemeSwitch />
+        <Link isExternal aria-label="Github" href={siteConfig.links.github}>
+          <CartIcon className="text-default-500 mt-3 ml-2" />
+        </Link>
+        <Link isExternal aria-label="Github" href={siteConfig.links.github}>
+          <ProfileIcon className="text-default-500 mt-3" />
+        </Link>
+        {/* <NavbarItem className="hidden md:flex">
           <Button
             isExternal
             as={Link}
@@ -103,15 +101,21 @@ export const Navbar = () => {
           >
             Sponsor
           </Button>
-        </NavbarItem>
+        </NavbarItem> */}
       </NavbarContent>
 
+{/*  mobile right navigation icon */}
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        <Link isExternal aria-label="Github" href={siteConfig.links.github}>
+        {/* <Link isExternal aria-label="Github" href={siteConfig.links.github}>
           <GithubIcon className="text-default-500" />
-        </Link>
+        </Link> */}
         <ThemeSwitch />
-        <NavbarMenuToggle />
+        <Link isExternal aria-label="Github" href={siteConfig.links.github}>
+          <CartIcon className="text-default-500 mt-3 ml-2" />
+        </Link>
+        <Link isExternal aria-label="Github" href={siteConfig.links.github}>
+          <ProfileIcon className="text-default-500 mt-3" />
+        </Link>
       </NavbarContent>
 
       <NavbarMenu>
