@@ -1,6 +1,8 @@
 import * as React from "react";
 
 import { IconSvgProps } from "@/types";
+import { useTheme } from "next-themes";
+
 
 
 
@@ -27,7 +29,7 @@ export const ProfileIcon: React.FC<IconSvgProps> = ({
       />
     </svg>
   );
-}
+};
 
 export const CartIcon: React.FC<IconSvgProps> = ({
   size = 32,
@@ -51,7 +53,7 @@ export const CartIcon: React.FC<IconSvgProps> = ({
       />
     </svg>
   );
-}
+};
 
 export const Logo: React.FC<IconSvgProps> = ({
   size = 36,
