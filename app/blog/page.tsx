@@ -1,9 +1,8 @@
-import { title } from "@/components/primitives";
+import { createClient } from "@/utils/supabase/server";
 
-export default function BlogPage() {
-  return (
-    <div>
-      <h1 className={title()}>Blog</h1>
-    </div>
-  );
+export default async function BlogPage() {
+  const supabase = createClient();
+  const { data: notes } = await supabase.from("notes").select();
+
+  return <pre>{JSON.stringify(notes, null, 2)}</pre>;
 }
