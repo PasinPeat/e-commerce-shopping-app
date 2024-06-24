@@ -8,36 +8,116 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-model Post {
-  id        Int      @id @default(autoincrement())
-  title     String   @db.VarChar(255)
-  createdAt DateTime @default(now()) @db.Timestamp(6)
-  content   String?
-  published Boolean  @default(false)
-  authorId  Int
-  author      User     @relation(fields: [authorId], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  tags      Tag[]
+model Address {
+  id           Int       @id @default(autoincrement())
+  addressValue String?   @db.VarChar(255)
+  city         String?   @db.VarChar(255)
+  country      String?   @default("Thailand") @db.VarChar(50)
+  zip_code     String?   @db.VarChar(10)
+  admins       Admin?
+  customers    Customer?
+  shipments    Shipment? @relation("AddressId")
 }
 
-model Profile {
-  id     Int     @id @default(autoincrement())
-  bio    String?
-  userId Int     @unique
-  user   User    @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+model Admin {
+  id          Int     @id @default(autoincrement())
+  firstName   String? @db.VarChar(255)
+  lastName    String? @db.VarChar(255)
+  email       String  @unique @db.VarChar(255)
+  password    String
+  addressId   Int     @unique
+  phoneNumber String  @unique @db.VarChar(255)
+  role        Role    @default(ADMIN)
+  address     Address @relation(fields: [addressId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
-model User {
-  id      Int      @id @default(autoincrement())
-  name    String?  @db.VarChar(255)
-  email   String   @unique @db.VarChar(255)
-  posts    Post[]
-  profile Profile?
+model Customer {
+  id          Int       @id @default(autoincrement())
+  firstName   String?   @db.VarChar(255)
+  lastName    String?   @db.VarChar(255)
+  email       String    @unique @db.VarChar(255)
+  password    String
+  addressId   Int       @unique
+  phoneNumber String    @unique @db.VarChar(255)
+  role        Role      @default(CUSTOMER)
+  carts       Cart?
+  address     Address   @relation(fields: [addressId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  orders      Order?
+  payments    Payment?
+  shipments   Shipment? @relation("customerId")
 }
 
-model Tag {
-  id    Int @id @default(autoincrement())
-  name  String
-  post  Post[]
+model Product {
+  id          Int        @id @default(autoincrement())
+  SKU         String     @unique @db.VarChar(20)
+  description String[]   @db.VarChar(255)
+  price       Decimal
+  stock       Int
+  categoryId  Int        @unique
+  carts       Cart?
+  orderItems  OrderItem?
+  category    Category   @relation("category", fields: [categoryId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
+model Category {
+  id       Int      @id @default(autoincrement())
+  name     String?  @db.VarChar(255)
+  products Product? @relation("category")
+}
 
+model Cart {
+  id         Int      @id @default(autoincrement())
+  quantity   Int
+  customerId Int      @unique
+  productId  Int      @unique
+  customer   Customer @relation(fields: [customerId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  product    Product  @relation(fields: [productId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model Order {
+  id         Int        @id @default(autoincrement())
+  orderDate  DateTime   @default(now())
+  totalPrice Decimal
+  customerId Int        @unique
+  shipmentId Int        @unique
+  paymentId  Int        @unique
+  customer   Customer   @relation(fields: [customerId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  payment    Payment    @relation(fields: [paymentId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  shipment   Shipment   @relation(fields: [shipmentId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  orderItems OrderItem?
+}
+
+model Shipment {
+  id                Int      @id @default(autoincrement())
+  shipmentDate      DateTime @default(now())
+  shipmentAddressId Int      @unique
+  customerId        Int      @unique
+  orders            Order?
+  customer          Customer @relation("customerId", fields: [customerId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  address           Address  @relation("AddressId", fields: [shipmentAddressId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model Payment {
+  id            Int      @id @default(autoincrement())
+  paymentDate   DateTime @default(now())
+  paymentMethod String
+  amount        Decimal
+  customerId    Int      @unique
+  orders        Order?
+  customer      Customer @relation(fields: [customerId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model OrderItem {
+  id        Int     @id @default(autoincrement())
+  quantity  Int
+  price     Decimal
+  productId Int     @unique
+  orderId   Int     @unique
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  product   Product @relation(fields: [productId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+enum Role {
+  CUSTOMER
+  ADMIN
+}
