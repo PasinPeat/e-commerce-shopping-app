@@ -1,16 +1,17 @@
-import React from "react";
+"use client";
+import React, { useRef, useEffect, ReactNode, RefObject } from "react";
 import ProductCard from "../productCard";
-import {Button, ButtonGroup} from "@nextui-org/button";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
+import { Button, ButtonGroup } from "@nextui-org/button";
+import "swiper/css";
+import Swiper from "swiper";
+import { register } from "swiper/element/bundle";
+import { SwiperSlideProps } from "swiper/react";
+import { TestSwiper } from "../slider";
 
-// import tshirtwithtape from '../../public/productImg/T-SHIRT-WITH-TAPE-DETAILS.jpg'
-// import sKINNYFITJEANS from '../../public/productImg/SKINNY-FIT-JEANS.jpg'
-// import cHECKEREDSHIRT from '../../public/productImg/CHECKERED-SHIRT.jpg'
-// import sLEEVESTRIPEDTSHIRT from '../../public/productImg/SLEEVE-STRIPED-T-SHIRT.jpg'
+register();
 
 type Props = {};
+
 const ProductData = [
   {
     src: "https://hmrwqjhhyatyjlnukuay.supabase.co/storage/v1/object/public/product/T-SHIRT-WITH-TAPE-DETAILS.jpg",
@@ -35,22 +36,44 @@ const ProductData = [
 ];
 
 export function NewArrivals({}: Props) {
+  // const swiperRef = useRef<SwiperRef>(null);
+
+  // useEffect(() => {
+  //   // listen for Swiper events using addEventListener
+  //   swiperRef.current.addEventListener("swiperprogress", (e: any) => {
+  //     const [swiper, progress] = e.detail;
+  //     console.log(progress);
+  //   });
+
+  //   swiperRef.current.addEventListener("swiperslidechange", (e: any) => {
+  //     console.log("slide changed");
+  //   });
+  // }, []);
+
   return (
     <div className="my-4 flex flex-col gap-14">
-      <h1 className="flex justify-center font-extrabold text-5xl my-8 ">New Arrival</h1>
-      <section className="flex flex-nowrap gap-4 overflow-hidden">
-        {ProductData.map((product, index) => (
-          <ProductCard
-            key={index}
-            src={product.src}
-            name={product.name}
-            price={product.price}
-          />
-        ))}
+      <h1 className="flex justify-center font-extrabold text-5xl my-8 ">
+        New Arrival
+      </h1>
+      <section className="">
+        {/* <swiper-container ref={swiperRef} slides-per-view="3">
+          <swiper-slide>
+            {ProductData.map((product, index) => (
+              <ProductCard
+                key={index}
+                src={product.src}
+                name={product.name}
+                price={product.price}
+              />
+            ))}
+          </swiper-slide>
+        </swiper-container> */}
+        
+        <TestSwiper/>
       </section>
-        <Button color="primary" className="w-[220px]">
-      View All
-    </Button>
+      <Button color="primary" className="w-[220px]">
+        View All
+      </Button>
     </div>
   );
 }
