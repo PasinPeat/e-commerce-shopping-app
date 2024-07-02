@@ -14,7 +14,7 @@ import { Input } from "@nextui-org/input";
 import { link as linkStyles } from "@nextui-org/theme";
 import NextLink from "next/link";
 import clsx from "clsx";
-
+import Image from "next/image";
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
 import {
@@ -57,8 +57,16 @@ export const Navbar = () => {
         <NavbarMenuToggle className="hidden sm:block md:basis-1 md:pl-4" />
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-1" href="/">
-            <Logo />
-            <p className="font-bold text-inherit">ACME</p>
+            {/* <Logo />
+            <p className="font-bold text-inherit">ACME</p> */}
+            <Image
+              width={160}
+              height={30}
+              src={
+                "https://hmrwqjhhyatyjlnukuay.supabase.co/storage/v1/object/public/product/icon/SHOP.CO.svg"
+              }
+              alt="logo"
+            />
           </NextLink>
         </NavbarBrand>
         <ul className=" sm:hidden flex gap-4 justify-start ml-2">
@@ -110,7 +118,7 @@ export const Navbar = () => {
 
       {/* show inside toggle menu */}
       <NavbarMenu>
-        {searchInput}
+        {/* {searchInput} */}
         <div className="mx-4 mt-2 flex flex-col gap-2">
           {siteConfig.navMenuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>

@@ -1,5 +1,10 @@
 import React from "react";
 import ProductCard from "../productCard";
+import {Button, ButtonGroup} from "@nextui-org/button";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+
 // import tshirtwithtape from '../../public/productImg/T-SHIRT-WITH-TAPE-DETAILS.jpg'
 // import sKINNYFITJEANS from '../../public/productImg/SKINNY-FIT-JEANS.jpg'
 // import cHECKEREDSHIRT from '../../public/productImg/CHECKERED-SHIRT.jpg'
@@ -31,8 +36,8 @@ const ProductData = [
 
 export function NewArrivals({}: Props) {
   return (
-    <div className="my-4">
-      <h1 className="text-center text-6xl mb-2">New Arrival</h1>
+    <div className="my-4 flex flex-col gap-14">
+      <h1 className="flex justify-center font-extrabold text-5xl my-8 ">New Arrival</h1>
       <section className="flex flex-nowrap gap-4 overflow-hidden">
         {ProductData.map((product, index) => (
           <ProductCard
@@ -43,6 +48,9 @@ export function NewArrivals({}: Props) {
           />
         ))}
       </section>
+        <Button color="primary" className="w-[220px]">
+      View All
+    </Button>
     </div>
   );
 }
@@ -50,7 +58,7 @@ export function NewArrivals({}: Props) {
 export function Topselling({}: Props) {
   return (
     <div className="my-4 sm:mt-8">
-      <h1 className="text-center text-6xl mb-4">Top Selling</h1>
+      <h1 className="text-center font-extrabold text-5xl my-8 ">Top Selling</h1>
       <section className="flex flex-nowrap gap-4 overflow-hidden">
         {ProductData.map((product, index) => (
           <ProductCard

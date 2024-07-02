@@ -27,8 +27,12 @@ async function HomePageBrowse({}: Props) {
 
   return (
     <div className="my-4 py-7 bg-[#F0F0F0] rounded-2xl p-4">
-      <h1 className="text-center font-extrabold text-5xl my-8 sm:max-w-[400px]">BROWSE BY DRESS STYLE</h1>
-      <section className=" grid grid-cols-5 gap-4 mb-8">
+      <div className="flex justify-center">
+        <h1 className="text-center font-extrabold text-5xl my-8 sm:max-w-[450px]">
+          BROWSE BY DRESS STYLE
+        </h1>
+      </div>
+      <section className=" grid grid-cols-5 sm:flex sm:flex-col sm:p-8 gap-4 mb-8">
         {/* {styleData.map((card, index) => (
           <div style={{'--image-url': `url(${card.url})`}} key={index} className="relative bg-[image:var(--image-url)] min-h-[290px]  bg-cover rounded-xl">
             

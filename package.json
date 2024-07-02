@@ -12,7 +12,7 @@
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
-    "@nextui-org/button": "2.0.34",
+    "@nextui-org/button": "^2.0.34",
     "@nextui-org/card": "^2.0.31",
     "@nextui-org/code": "2.0.29",
     "@nextui-org/image": "^2.0.29",
@@ -53,11 +53,14 @@
     "postcss": "8.4.38",
     "react": "18.3.1",
     "react-dom": "18.3.1",
+    "react-slick": "^0.30.2",
+    "slick-carousel": "^1.8.1",
     "tailwind-variants": "0.1.20",
     "tailwindcss": "3.4.3"
   },
   "devDependencies": {
     "@types/node": "^20.14.9",
+    "@types/react-slick": "^0.23.13",
     "prisma": "^5.16.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.2"
