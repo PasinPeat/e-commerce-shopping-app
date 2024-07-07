@@ -6,7 +6,7 @@ type productdata = {
 
 export const ProductData: productdata[] = [
   {
-    src: "https://hmrwqjhhyatyjlnukuay.supabase.co/storage/v1/object/public/product/T-SHIRT-WITH-TAPE-DETAILS.jpg",
+    src: "https://hmrwqjhhyatyjlnukuay.supabase.co/storage/v1/object/public/product/1126851_ENG_4.webp",
     name: "T-SHIRT WITH TAPE DETAILS",
     price: 120,
   },
@@ -26,3 +26,4 @@ export const ProductData: productdata[] = [
     price: 130,
   },
 ];
+
