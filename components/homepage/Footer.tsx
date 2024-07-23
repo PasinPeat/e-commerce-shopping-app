@@ -1,10 +1,11 @@
 import prisma from "@/lib/db";
 import React from "react";
 type Props = {};
-
+import { fetchCustomerData, fetchProductData } from "@/lib/fetchData";
 async function Footer({}: Props) {
-  const users = await prisma.customer.findMany();
-  console.log(users);
+  const users = await fetchCustomerData();
+  const products = await fetchProductData();
+  // console.log(users);
   return (
     <>
       <div>HomePageBrowse</div>
@@ -16,6 +17,16 @@ async function Footer({}: Props) {
             <li>{user.lastName}</li>
             <li>{user.email}</li>
             <li>{user.phoneNumber}</li>
+          </ul>
+        ))}
+      </div>
+      <div>
+        {products.map((product) => (
+          <ul key={product.id}>
+            <li>{product.id}</li>
+            <li>{product.name}</li>
+            <li>{product.price}</li>
+            <li>{product.slug}</li>
           </ul>
         ))}
       </div>

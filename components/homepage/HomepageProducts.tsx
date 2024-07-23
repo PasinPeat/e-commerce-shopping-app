@@ -29,7 +29,11 @@ export async function NewArrivals({}: Props) {
 export async function Topselling({}: Props) {
   const products = await prisma.product.findMany()
 
-console.log(products[0].imageUrl);
+// console.log(products[0].imageUrl);
+
+if(!products){
+  return <div> no products</div>
+}
   return (
     <div className="my-4 sm:mt-8">
       <h1 className="text-center font-extrabold text-5xl my-8 ">Top Selling</h1>

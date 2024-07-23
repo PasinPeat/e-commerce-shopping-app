@@ -25,11 +25,11 @@ model Admin {
   lastName    String?   @db.VarChar(255)
   email       String    @unique @db.VarChar(255)
   password    String
-  address_id  Int       @unique(map: "Admin_addressId_key")
   phoneNumber String    @unique @db.VarChar(255)
+  role        Role      @default(ADMIN)
+  address_id  Int       @unique(map: "Admin_addressId_key")
   created_at  DateTime? @default(now()) @db.Timestamptz(6)
   update_at   DateTime? @updatedAt @db.Timestamptz(6)
-  role        Role      @default(ADMIN)
   Address     Address   @relation(fields: [address_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
@@ -39,9 +39,9 @@ model Customer {
   lastName    String?   @db.VarChar(255)
   email       String    @unique @db.VarChar(255)
   password    String
-  address_id  Int?      @unique(map: "Customer_addressId_key")
   phoneNumber String    @unique @db.VarChar(255)
   role        Role      @default(CUSTOMER)
+  address_id  Int?      @unique(map: "Customer_addressId_key")
   created_at  DateTime  @default(now()) @db.Timestamptz(6)
   update_at   DateTime? @updatedAt @db.Timestamptz(6)
   Cart        Cart?
@@ -52,23 +52,24 @@ model Customer {
 }
 
 model Product {
-  id           Int            @id @default(autoincrement())
-  SKU          String?        @unique
-  name         String?
-  price        Float          @db.Real
-  category_id  Int?           @unique(map: "Product_categoryId_key")
-  slug         String?        @unique
-  color        String?
-  imageUrl     String[]
-  description  Json[]
-  brand_id     Int?           @unique(map: "Product_brandId_key")
-  created_at   DateTime       @default(now()) @db.Timestamptz(6)
-  update_at    DateTime?      @updatedAt @db.Timestamptz(6)
-  Cart         Cart?
-  OrderItem    OrderItem?
-  brand        Brand?         @relation("brand", fields: [brand_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  category     Category?      @relation(fields: [category_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  ProductStock ProductStock[]
+  id             Int            @id @default(autoincrement())
+  SKU            String?        @unique
+  name           String?
+  price          Float          @db.Real
+  brand_id       Int?
+  category_id    Int?
+  color          String?
+  created_at     DateTime       @default(now()) @db.Timestamptz(6)
+  imageUrl       String[]
+  slug           String?        @unique
+  update_at      DateTime?      @updatedAt @db.Timestamptz(6)
+  description_id Int?
+  Cart           Cart?
+  OrderItem      OrderItem?
+  brand          Brand?         @relation(fields: [brand_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  category       Category?      @relation(fields: [category_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  description    Description?   @relation(fields: [description_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  ProductStock   ProductStock[]
 }
 
 model ProductStock {
@@ -80,23 +81,30 @@ model ProductStock {
 }
 
 model Brand {
-  id       Int      @id @default(autoincrement())
-  name     String?  @db.VarChar(255)
-  products Product? @relation("brand")
+  id       Int       @id @default(autoincrement())
+  name     String?   @db.VarChar(255)
+  products Product[]
 }
 
 model Category {
-  id      Int      @id @default(autoincrement())
-  name    String?  @db.VarChar(255)
-  Product Product?
+  id       Int       @id @default(autoincrement())
+  name     String?   @db.VarChar(255)
+  products Product[]
+}
+
+model Description {
+  id       Int       @id @default(autoincrement())
+  name     String?   @db.VarChar(255)
+  contents Json[]
+  Products Product[]
 }
 
 model Cart {
   id          Int       @id @default(autoincrement())
   quantity    Int
+  created_at  DateTime  @default(now()) @db.Timestamptz(6)
   customer_id Int?      @unique(map: "Cart_customerId_key")
   product_id  Int?      @unique(map: "Cart_productId_key")
-  created_at  DateTime  @default(now()) @db.Timestamptz(6)
   update_at   DateTime? @updatedAt @db.Timestamptz(6)
   Customer    Customer? @relation(fields: [customer_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   Product     Product?  @relation(fields: [product_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
@@ -106,10 +114,10 @@ model Order {
   id          Int        @id @default(autoincrement())
   orderDate   DateTime   @default(now())
   totalPrice  Decimal
-  customer_id Int        @unique(map: "Order_customerId_key")
-  shipment_id Int        @unique(map: "Order_shipmentId_key")
-  payment_id  Int        @unique(map: "Order_paymentId_key")
   created_at  DateTime   @default(now()) @db.Timestamptz(6)
+  customer_id Int        @unique(map: "Order_customerId_key")
+  payment_id  Int        @unique(map: "Order_paymentId_key")
+  shipment_id Int        @unique(map: "Order_shipmentId_key")
   Customer    Customer   @relation(fields: [customer_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   Payment     Payment    @relation(fields: [payment_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   Shipment    Shipment   @relation(fields: [shipment_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
@@ -131,8 +139,8 @@ model Payment {
   paymentDate   DateTime @default(now())
   paymentMethod String
   amount        Decimal
-  customer_id   Int      @unique(map: "Payment_customerId_key")
   created_at    DateTime @default(now()) @db.Timestamptz(6)
+  customer_id   Int      @unique(map: "Payment_customerId_key")
   Order         Order?
   Customer      Customer @relation(fields: [customer_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
@@ -141,8 +149,8 @@ model OrderItem {
   id         Int      @id @default(autoincrement())
   quantity   Int
   price      Decimal
-  product_id Int?     @unique(map: "OrderItem_productId_key")
   order_id   Int      @unique(map: "OrderItem_orderId_key")
+  product_id Int?     @unique(map: "OrderItem_productId_key")
   Order      Order    @relation(fields: [order_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   Product    Product? @relation(fields: [product_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
