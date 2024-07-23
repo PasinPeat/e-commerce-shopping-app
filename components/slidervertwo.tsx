@@ -2,14 +2,19 @@
 
 import ProductCard from "./productCard";
 import React from "react";
-import { ProductData } from "@/lib/productsample";
+// import { ProductData } from "@/lib/productsample";
+import { fetchNewArrivalProduct } from "@/lib/fetchData";
 // import { SwiperOptions } from "swiper/types";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
-export const TestSwipervertwo = () => {
+export const TestSwipervertwo = async () => {
+  const ProductData = await fetchNewArrivalProduct();
+
+  console.log(ProductData);
+
   return (
     <Swiper
       className="w-full h-full p-4"
@@ -50,7 +55,7 @@ export const TestSwipervertwo = () => {
           key={index}
         >
           <ProductCard
-            src={product.src}
+            src={product.imageUrl[0]}
             name={product.name}
             price={product.price}
           />

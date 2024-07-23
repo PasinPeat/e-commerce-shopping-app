@@ -23,7 +23,7 @@ const styleData = [
 ];
 async function HomePageBrowse({}: Props) {
   const users = await prisma.customer.findMany();
-  console.log(users);
+  // console.log(users);
 
   return (
     <div className="my-4 py-7 bg-[#F0F0F0] rounded-2xl p-4">
