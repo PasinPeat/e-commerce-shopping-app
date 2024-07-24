@@ -7,7 +7,7 @@ export default async function CardWrapper() {
 
   return (
     <>
-      <div className="grid grid-cols-4">
+      <div className="grid grid-cols-4 gap-4">
         {products.map((product, index) => (
           <Link href={`/products/${product.slug}`} key={index}>
           <ProductCard

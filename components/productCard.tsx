@@ -12,13 +12,15 @@ const ProductCard = (props: ImageProps) => {
   return (
     <div className="w-fit min-h-[315px] md:min-h-[295px] md:min-w-[295px] sm:h-[250px] sm:w-[300px]">
       <Card className="py-4 md:max-w-[295px] hover:scale-105 hover:cursor-pointer">
-        <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+        <CardHeader className="pb-0 pt-2 px-4 flex-col items-start max-w-60 max-h-[200px]">
           <Image
             alt="Card background"
             className="object-cover rounded-xl"
             src={props.src}
-            width={295}
-            height={295}
+            width={200}
+            height={200}
+            // fill={true}
+            // sizes="(max-hight: 768px)"
           />
         </CardHeader>
         <CardBody className="overflow-visible py-2">
