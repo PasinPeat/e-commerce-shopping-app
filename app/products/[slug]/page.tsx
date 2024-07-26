@@ -6,7 +6,7 @@ type Props = {};
 
 async function ProductPage({ params }: { params: { slug: string } }) {
   const product = await fetchProductbySlug(params.slug);
-  console.log(product);
+  // console.log(product);
 
   return <>
   <div>{product?.name}</div>
