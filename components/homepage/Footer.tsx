@@ -4,8 +4,8 @@ type Props = {};
 import { fetchCustomerData, fetchProductData } from "@/lib/fetchData";
 async function Footer({}: Props) {
   const users = await fetchCustomerData();
-  const products = await fetchProductData();
-  // console.log(users);
+  const products = await fetchProductData({ name: null, price: null });
+  console.log(products[0]);
   return (
     <>
       <div>HomePageBrowse</div>
@@ -22,11 +22,12 @@ async function Footer({}: Props) {
       </div>
       <div>
         {products.map((product) => (
-          <ul key={product.id}>
+          <ul key={product.id} className="py-4">
             <li>{product.id}</li>
             <li>{product.name}</li>
             <li>{product.price}</li>
             <li>{product.slug}</li>
+            <li>{product.brand?.name}</li>
           </ul>
         ))}
       </div>

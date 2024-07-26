@@ -1,5 +1,5 @@
 import prisma from "@/lib/db";
-import { formatCurrency, formatCurrencyVer2 } from "./utils";
+import { formatCurrencyVer2 } from "./utils";
 
 export async function fetchCustomerData() {
   try {
@@ -11,19 +11,91 @@ export async function fetchCustomerData() {
   }
 }
 
-export async function fetchProductData() {
+export async function fetchProductData({
+  name,
+  price,
+}: {
+  name: string | null;
+  price: number[] | null;
+}) {
   try {
-    const data = await prisma.product.findMany({
-      distinct: ["name"],
-      orderBy: {
-        id: "asc",
-      },
-    });
+    let data = null;
+    if (name && price) {
+      data = await prisma.product.findMany({
+        where: {
+          OR: [
+            {
+              name: {
+                contains: name,
+              },
+            },
+          ],
+        },
+        include: {
+          brand: true,
+        },
+        distinct: ["name"],
+        orderBy: {
+          id: "asc",
+        },
+      });
+    }
+    // else if (name && price) {
+    //   data = await prisma.product.findMany({
+    //     where: {
+    //       OR: [
+    //         {
+    //           name: {
+    //             contains: name,
+    //           },
+    //         },
+    //       ],
+    //       AND: [
+    //         {
+    //           price: {
+    //             gte: price[0] || 0,
+    //           },
+    //         },
+    //         {
+    //           price: {
+    //             lte: price[1] || 100000,
+    //           },
+    //         },
+    //       ],
+    //     },
+    //     include: {
+    //       brand: true,
+    //     },
+    //     distinct: ["name"],
+    //     orderBy: {
+    //       id: "asc",
+    //     },
+    //   });
+    // }
+    else {
+      data = await prisma.product.findMany({
+        include: {
+          brand: true,
+        },
+        distinct: ["name"],
+        orderBy: {
+          id: "asc",
+        },
+      });
+    }
+    console.log(data);
 
-    const products = data.map((product) => ({
-      ...product,
-      price: formatCurrencyVer2(product.price),
-    }));
+    let products = null;
+    if (price) {
+      products = data
+        .filter(
+          (product) => product.price >= price[0] && product.price <= price[1]
+        )
+        .map((product) => ({
+          ...product,
+          price: formatCurrencyVer2(product.price),
+        }));
+    }
 
     return products;
   } catch (error) {
