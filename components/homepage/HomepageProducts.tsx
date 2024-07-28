@@ -38,7 +38,7 @@ export async function Topselling({}: Props) {
       <h1 className="text-center font-extrabold text-5xl my-8 ">Top Selling</h1>
       <section className="flex flex-nowrap gap-4 overflow-hidden">
         {products[0].imageUrl.map((product, index) => (
-          <ProductCard key={index} src={product} name="test" price={12} />
+          <ProductCard key={index} src={product} name="test" price="12" />
         ))}
       </section>
     </div>

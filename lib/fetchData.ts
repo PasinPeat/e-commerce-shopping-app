@@ -83,7 +83,7 @@ export async function fetchProductData({
         },
       });
     }
-    console.log(data);
+    // console.log(data);
 
     let products = null;
     if (price) {
@@ -110,8 +110,11 @@ export async function fetchProductbySlug(slug: string) {
       where: {
         slug: `${slug}`,
       },
+      include: {
+        brand: true,
+      },
     });
-    // console.log(data);
+    console.log(product);
 
     if (product) {
       const productWithFormatCurrency = {
@@ -122,6 +125,22 @@ export async function fetchProductbySlug(slug: string) {
     } else {
       return null;
     }
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch Products data.");
+  }
+}
+
+export async function fetchProductbyName(name: string | undefined) {
+  try {
+    const products = await prisma.product.findMany({
+      where: {
+        name: name,
+      },
+    });
+    console.log(products);
+
+    return products;
   } catch (error) {
     console.error("Database Error:", error);
     throw new Error("Failed to fetch Products data.");

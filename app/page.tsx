@@ -42,7 +42,7 @@ export default function Home() {
         <HomepageReview />
       </section>
       <footer>
-        <Footer />
+        {/* <Footer /> */}
       </footer>
     </>
   );
