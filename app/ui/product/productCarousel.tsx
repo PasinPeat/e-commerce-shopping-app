@@ -44,16 +44,17 @@ export default function productCarousel({
         // }}
         direction={"vertical"}
         spaceBetween={10}
-        // slidesPerView={0.4}
+        slidesPerView={"auto"}
+        centeredSlides={true}
         navigation={true}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
         className="basis-3/4 h-full"
-        
+        slidesOffsetBefore={85}
       >
         {imgUrl &&
           imgUrl.map((product, index) => (
-            <SwiperSlide key={index} className="h-full ">
+            <SwiperSlide key={index} className="min-h-[480px] first:pt-10">
               <Image className="object-cover " src={product}  width={700} height={700} alt="Running shoe picture" quality={80}/>
             </SwiperSlide>
           ))}
