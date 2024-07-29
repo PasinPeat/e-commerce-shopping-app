@@ -147,6 +147,22 @@ export async function fetchProductbyName(name: string | undefined) {
   }
 }
 
+export async function fetchProductStockbyId(id: number | undefined) {
+  try {
+    const stocks = await prisma.productStock.findMany({
+      where: {
+        product_id: id,
+      },
+    });
+    console.log(stocks);
+
+    return stocks;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch Products data.");
+  }
+}
+
 export async function fetchNewArrivalProduct() {
   try {
     const data = await prisma.product.findMany({
