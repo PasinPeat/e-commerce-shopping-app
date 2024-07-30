@@ -112,6 +112,7 @@ export async function fetchProductbySlug(slug: string) {
       },
       include: {
         brand: true,
+        description: true,
       },
     });
     console.log(product);
