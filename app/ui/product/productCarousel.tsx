@@ -22,7 +22,7 @@ export default function productCarousel({
         ))} */}
       <Swiper
         direction={"vertical"}
-        onSwiper={setThumbsSwiper}
+        // onSwiper={setThumbsSwiper}
         spaceBetween={10}
         slidesPerView={2}
         freeMode={true}

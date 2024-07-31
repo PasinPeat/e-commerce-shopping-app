@@ -39,40 +39,7 @@ export async function fetchProductData({
           id: "asc",
         },
       });
-    }
-    // else if (name && price) {
-    //   data = await prisma.product.findMany({
-    //     where: {
-    //       OR: [
-    //         {
-    //           name: {
-    //             contains: name,
-    //           },
-    //         },
-    //       ],
-    //       AND: [
-    //         {
-    //           price: {
-    //             gte: price[0] || 0,
-    //           },
-    //         },
-    //         {
-    //           price: {
-    //             lte: price[1] || 100000,
-    //           },
-    //         },
-    //       ],
-    //     },
-    //     include: {
-    //       brand: true,
-    //     },
-    //     distinct: ["name"],
-    //     orderBy: {
-    //       id: "asc",
-    //     },
-    //   });
-    // }
-    else {
+    } else {
       data = await prisma.product.findMany({
         include: {
           brand: true,
@@ -178,6 +145,25 @@ export async function fetchNewArrivalProduct() {
       ...product,
       price: formatCurrencyVer2(product.price),
     }));
+
+    return products;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch Products data.");
+  }
+}
+
+export async function fetchOtherproducts(name: string | undefined) {
+  try {
+    const products = await prisma.product.findMany({
+      where: {
+        NOT: {
+          name: name,
+        },
+      },
+      take: 4,
+      distinct: ["name"],
+    });
 
     return products;
   } catch (error) {

@@ -9,11 +9,13 @@ import ProductDesc from "@/app/ui/product/productDesc";
 import ProductCarousel from "../../ui/product/productCarousel";
 import Productcolors from "@/app/ui/product/productcolors";
 import ProductStocks from "@/app/ui/product/productStocks";
+import OtherProducts from "@/app/ui/product/otherProducts";
 
 async function ProductPage({ params }: { params: { slug: string } }) {
   const product = await fetchProductbySlug(params.slug);
-  // console.log(product);
+
   const productName = product?.name?.toString();
+
   const productDescription = product?.description?.contents;
   const productId = Number(product?.id);
   const productsbyName = await fetchProductbyName(productName);
@@ -42,6 +44,10 @@ async function ProductPage({ params }: { params: { slug: string } }) {
       <div className="flex flex-col">
         <h1 className="font-bold text-3xl">Product Specification</h1>
         <ProductDesc desc={productDescription} />
+      </div>
+      <div className="flex flex-col gap-8 justify-center items-center">
+        <h1 className="font-bold text-3xl  ">You May Also Like</h1>
+        <OtherProducts name={product?.name?.toString()} />
       </div>
     </main>
   );
