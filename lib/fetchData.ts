@@ -39,40 +39,7 @@ export async function fetchProductData({
           id: "asc",
         },
       });
-    }
-    // else if (name && price) {
-    //   data = await prisma.product.findMany({
-    //     where: {
-    //       OR: [
-    //         {
-    //           name: {
-    //             contains: name,
-    //           },
-    //         },
-    //       ],
-    //       AND: [
-    //         {
-    //           price: {
-    //             gte: price[0] || 0,
-    //           },
-    //         },
-    //         {
-    //           price: {
-    //             lte: price[1] || 100000,
-    //           },
-    //         },
-    //       ],
-    //     },
-    //     include: {
-    //       brand: true,
-    //     },
-    //     distinct: ["name"],
-    //     orderBy: {
-    //       id: "asc",
-    //     },
-    //   });
-    // }
-    else {
+    } else {
       data = await prisma.product.findMany({
         include: {
           brand: true,
@@ -83,7 +50,7 @@ export async function fetchProductData({
         },
       });
     }
-    console.log(data);
+    // console.log(data);
 
     let products = null;
     if (price) {
@@ -110,8 +77,12 @@ export async function fetchProductbySlug(slug: string) {
       where: {
         slug: `${slug}`,
       },
+      include: {
+        brand: true,
+        description: true,
+      },
     });
-    // console.log(data);
+    console.log(product);
 
     if (product) {
       const productWithFormatCurrency = {
@@ -124,7 +95,39 @@ export async function fetchProductbySlug(slug: string) {
     }
   } catch (error) {
     console.error("Database Error:", error);
-    throw new Error("Failed to fetch Products data.");
+    throw new Error("Failed to fetch Products data by Slug.");
+  }
+}
+
+export async function fetchProductbyName(name: string | undefined) {
+  try {
+    const products = await prisma.product.findMany({
+      where: {
+        name: name,
+      },
+    });
+    console.log(products);
+
+    return products;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch Products data by Name.");
+  }
+}
+
+export async function fetchProductStockbyId(id: number | undefined) {
+  try {
+    const stocks = await prisma.productStock.findMany({
+      where: {
+        product_id: id,
+      },
+    });
+    console.log(stocks);
+
+    return stocks;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch Products Stock by Id.");
   }
 }
 
@@ -146,6 +149,25 @@ export async function fetchNewArrivalProduct() {
     return products;
   } catch (error) {
     console.error("Database Error:", error);
-    throw new Error("Failed to fetch Products data.");
+    throw new Error("Failed to fetch New Arrival Product.");
+  }
+}
+
+export async function fetchOtherproducts(name: string | undefined) {
+  try {
+    const products = await prisma.product.findMany({
+      where: {
+        NOT: {
+          name: name,
+        },
+      },
+      take: 4,
+      distinct: ["name"],
+    });
+
+    return products;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch Other products.");
   }
 }

@@ -3,14 +3,14 @@ import React from "react";
 type Props = {};
 import { fetchCustomerData, fetchProductData } from "@/lib/fetchData";
 async function Footer({}: Props) {
-  const users = await fetchCustomerData();
-  const products = await fetchProductData({ name: null, price: null });
-  console.log(products[0]);
+  // const users = await fetchCustomerData();
+  // const products = await fetchProductData({ name: null, price: null });
+  // console.log(products[0]);
   return (
     <>
       <div>HomePageBrowse</div>
       <div className="flex justify-center items-center text-green-600">
-        {users.map((user) => (
+        {/* {users.map((user) => (
           <ul key={user.id}>
             <li>{user.id}</li>
             <li>{user.firstName}</li>
@@ -18,10 +18,10 @@ async function Footer({}: Props) {
             <li>{user.email}</li>
             <li>{user.phoneNumber}</li>
           </ul>
-        ))}
+        ))} */}
       </div>
       <div>
-        {products.map((product) => (
+        {/* {products.map((product) => (
           <ul key={product.id} className="py-4">
             <li>{product.id}</li>
             <li>{product.name}</li>
@@ -29,7 +29,7 @@ async function Footer({}: Props) {
             <li>{product.slug}</li>
             <li>{product.brand?.name}</li>
           </ul>
-        ))}
+        ))} */}
       </div>
     </>
   );

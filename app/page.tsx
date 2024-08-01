@@ -32,7 +32,7 @@ export default function Home() {
         <Brands />
       </section>
       <section>
-        <NewArrivals />
+        {/* <NewArrivals /> */}
         <Topselling />
       </section>
       <section>
@@ -42,7 +42,7 @@ export default function Home() {
         <HomepageReview />
       </section>
       <footer>
-        <Footer />
+        {/* <Footer /> */}
       </footer>
     </>
   );
