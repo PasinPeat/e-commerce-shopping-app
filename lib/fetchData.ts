@@ -95,7 +95,7 @@ export async function fetchProductbySlug(slug: string) {
     }
   } catch (error) {
     console.error("Database Error:", error);
-    throw new Error("Failed to fetch Products data.");
+    throw new Error("Failed to fetch Products data by Slug.");
   }
 }
 
@@ -111,7 +111,7 @@ export async function fetchProductbyName(name: string | undefined) {
     return products;
   } catch (error) {
     console.error("Database Error:", error);
-    throw new Error("Failed to fetch Products data.");
+    throw new Error("Failed to fetch Products data by Name.");
   }
 }
 
@@ -127,7 +127,7 @@ export async function fetchProductStockbyId(id: number | undefined) {
     return stocks;
   } catch (error) {
     console.error("Database Error:", error);
-    throw new Error("Failed to fetch Products data.");
+    throw new Error("Failed to fetch Products Stock by Id.");
   }
 }
 
@@ -149,7 +149,7 @@ export async function fetchNewArrivalProduct() {
     return products;
   } catch (error) {
     console.error("Database Error:", error);
-    throw new Error("Failed to fetch Products data.");
+    throw new Error("Failed to fetch New Arrival Product.");
   }
 }
 
@@ -168,6 +168,6 @@ export async function fetchOtherproducts(name: string | undefined) {
     return products;
   } catch (error) {
     console.error("Database Error:", error);
-    throw new Error("Failed to fetch Products data.");
+    throw new Error("Failed to fetch Other products.");
   }
 }

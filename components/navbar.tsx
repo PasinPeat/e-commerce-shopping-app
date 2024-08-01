@@ -30,7 +30,6 @@ import {
 } from "@/components/icons";
 
 export const Navbar = () => {
-  
   const searchInput = (
     <Input
       aria-label="Search"
@@ -58,7 +57,7 @@ export const Navbar = () => {
       <NavbarContent className="md:basis-1/5 basis-full" justify="start">
         <NavbarMenuToggle className="hidden sm:block md:basis-1 md:pl-4" />
         <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <Link className="flex justify-start items-center gap-1" href="/" >
+          <Link className="flex justify-start items-center gap-1" href="/">
             {/* <Logo />
             <p className="font-bold text-inherit">ACME</p> */}
             <Image
@@ -74,7 +73,8 @@ export const Navbar = () => {
         <ul className=" sm:hidden flex gap-4 justify-start ml-2">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
-              <NextLink
+              <Link className=" text-foreground" href={item.href}>{item.label}</Link>
+              {/* <NextLink
                 className={clsx(
                   linkStyles({ color: "foreground" }),
                   "data-[active=true]:text-primary data-[active=true]:font-medium"
@@ -83,7 +83,7 @@ export const Navbar = () => {
                 href={item.href}
               >
                 {item.label}
-              </NextLink>
+              </NextLink> */}
             </NavbarItem>
           ))}
         </ul>

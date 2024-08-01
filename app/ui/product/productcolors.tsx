@@ -9,7 +9,7 @@ type Props = {
 };
 
 interface ImgUrl {
-  src : string[];
+  src: string[];
 }
 
 function Productcolors({ products }: Props) {
@@ -20,15 +20,13 @@ function Productcolors({ products }: Props) {
       <div>Select Colors</div>
       <div className="flex gap-3 mt-4 ">
         {products &&
-          products.map((product,index) => (
-            
-            
+          products.map((product, index) => (
             <div key={index}>
               <button
                 type="button"
                 onClick={() => router.push(`/products/${product.slug}`)}
               >
-                {product.imageUrl && (
+                {product.imageUrl && Array.isArray(product.imageUrl) && (
                   <Image
                     width={50}
                     height={50}

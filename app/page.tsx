@@ -32,7 +32,7 @@ export default function Home() {
         <Brands />
       </section>
       <section>
-        <NewArrivals />
+        {/* <NewArrivals /> */}
         <Topselling />
       </section>
       <section>

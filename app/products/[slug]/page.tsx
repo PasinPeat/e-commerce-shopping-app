@@ -4,7 +4,7 @@ import {
   fetchProductbyName,
   fetchProductStockbyId,
 } from "@/lib/fetchData";
-import prisma from "@/lib/db";
+// import prisma from "@/lib/db";
 import ProductDesc from "@/app/ui/product/productDesc";
 import ProductCarousel from "../../ui/product/productCarousel";
 import Productcolors from "@/app/ui/product/productcolors";

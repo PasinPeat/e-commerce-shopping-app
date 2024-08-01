@@ -8,14 +8,30 @@ import prisma from "@/lib/db";
 import Link from "next/link";
 
 type Props = {};
+interface ProductData {
+  price: string;
+  id: number;
+  SKU: string | null;
+  name: string | null;
+  brand_id: number | null;
+  category_id: number | null;
+  color: string | null;
+  created_at: Date;
+  imageUrl: string[];
+  slug: string | null;
+  update_at: Date | null;
+  description_id: number | null;
+}
 
 export async function NewArrivals({}: Props) {
+  const ProductData:ProductData[]  = await fetchNewArrivalProduct();
+  
   return (
     <div className="my-4 flex flex-col  items-center gap-14">
       <h1 className="flex justify-center font-extrabold text-5xl my-8 ">
         New Arrival
       </h1>
-      <TestSwipervertwo />
+      <TestSwipervertwo data={ProductData}  />
       <Link href="/search">
         <Button color="primary" className="w-[220px]">
           View All
