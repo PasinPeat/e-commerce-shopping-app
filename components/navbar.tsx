@@ -98,7 +98,7 @@ export const Navbar = () => {
         <Link isExternal aria-label="Github" href={siteConfig.links.github}>
           <CartIcon className="text-default-500 mt-3 ml-2" />
         </Link>
-        <Link isExternal aria-label="Github" href={siteConfig.links.github}>
+        <Link isExternal aria-label="Github" href="/profile">
           <ProfileIcon className="text-default-500 mt-3" />
         </Link>
       </NavbarContent>
@@ -113,7 +113,7 @@ export const Navbar = () => {
         <Link isExternal aria-label="Github" href={siteConfig.links.github}>
           <CartIcon className="text-default-500 mt-3 ml-2" />
         </Link>
-        <Link isExternal aria-label="Github" href={siteConfig.links.github}>
+        <Link isExternal aria-label="Github" href="/profile">
           <ProfileIcon className="text-default-500 mt-3" />
         </Link>
       </NavbarContent>

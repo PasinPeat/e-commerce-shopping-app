@@ -10,6 +10,7 @@ import ProductCarousel from "../../ui/product/productCarousel";
 import Productcolors from "@/app/ui/product/productcolors";
 import ProductStocks from "@/app/ui/product/productStocks";
 import OtherProducts from "@/app/ui/product/otherProducts";
+import Link from "next/link";
 
 async function ProductPage({ params }: { params: { slug: string } }) {
   const product = await fetchProductbySlug(params.slug);
@@ -36,8 +37,16 @@ async function ProductPage({ params }: { params: { slug: string } }) {
           <article className="my-4">
             <Productcolors products={productsbyName} />
           </article>
-          <article className="my-4">
+          <article className="my-4 flex flex-col gap-3">
             <ProductStocks stocks={productStock} />
+            <div className="flex gap-2">
+              <Link href="/checkout/cart">
+              <button className="bg-orange-400 p-2 rounded-md">add to cart</button>
+              </Link>
+              <Link href="/checkout/payment">
+              <button className="bg-blue-500 p-2 rounded-md">Buy</button>
+              </Link>
+            </div>
           </article>
         </section>
       </div>
