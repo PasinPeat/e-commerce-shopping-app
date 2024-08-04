@@ -5,20 +5,24 @@ type Props = {};
 
 const styleData = [
   {
-    name: "Casual",
-    url: "https://hmrwqjhhyatyjlnukuay.supabase.co/storage/v1/object/public/product/dress%20style/image_11.jpg",
+    name: "Hoka",
+    url: "https://hmrwqjhhyatyjlnukuay.supabase.co/storage/v1/object/public/product/running-pic/homepage-brand-choose/Trail_collection_men.jpg",
   },
   {
-    name: "Formal",
-    url: "https://hmrwqjhhyatyjlnukuay.supabase.co/storage/v1/object/public/product/dress%20style/image_13.jpg",
+    name: "Kailas",
+    url: "https://hmrwqjhhyatyjlnukuay.supabase.co/storage/v1/object/public/product/running-pic/homepage-brand-choose/kailas.jpg",
   },
   {
-    name: "Party",
-    url: "https://hmrwqjhhyatyjlnukuay.supabase.co/storage/v1/object/public/product/dress%20style/image_12.jpg",
+    name: "Asics",
+    url: "https://hmrwqjhhyatyjlnukuay.supabase.co/storage/v1/object/public/product/running-pic/homepage-brand-choose/sport_vision_blog_asics_gel_nimbus24_cover_photo.jpg",
   },
   {
-    name: "Gym",
-    url: "https://hmrwqjhhyatyjlnukuay.supabase.co/storage/v1/object/public/product/dress%20style/image_14.jpg",
+    name: "Nike",
+    url: "https://hmrwqjhhyatyjlnukuay.supabase.co/storage/v1/object/public/product/running-pic/homepage-brand-choose/the-best-beginner-nike-running-shoes.jpg",
+  },
+  {
+    name: "Altra",
+    url: "https://hmrwqjhhyatyjlnukuay.supabase.co/storage/v1/object/public/product/running-pic/homepage-brand-choose/24F_Olympus6_Homepage_MainHero_Product-Focused_Desktop_8x3.avif",
   },
 ];
 async function HomePageBrowse({}: Props) {
@@ -28,34 +32,35 @@ async function HomePageBrowse({}: Props) {
   return (
     <div className="my-4 py-7 bg-[#F0F0F0] rounded-2xl p-4">
       <div className="flex justify-center">
-        <h1 className="text-center font-extrabold text-5xl my-8 sm:max-w-[450px]">
-          BROWSE BY DRESS STYLE
+        <h1 className="text-center font-extrabold text-5xl text-slate-800 my-8 sm:max-w-[450px]">
+          BROWSE BY BRANDS
         </h1>
       </div>
       <section className=" grid grid-cols-5 sm:flex sm:flex-col sm:p-8 gap-4 mb-8">
-        {/* {styleData.map((card, index) => (
-          <div style={{'--image-url': `url(${card.url})`}} key={index} className="relative bg-[image:var(--image-url)] min-h-[290px]  bg-cover rounded-xl">
-            
-          </div>
-        ))} */}
-        <div className="relative  col-span-2 bg-casual min-h-[290px]  bg-cover rounded-xl">
+        
+        <div className="relative  col-span-2 bg-hoka min-h-[290px]  bg-cover  rounded-xl">
           <p className=" absolute text-3xl font-bold top-6 left-6">
             {styleData[0].name}
           </p>
         </div>
-        <div className="relative col-span-3 bg-formal min-h-[290px]  bg-cover rounded-xl">
+        <div className="relative col-span-3 bg-kailas min-h-[290px] bg-left bg-cover rounded-xl">
           <p className=" absolute text-3xl font-bold top-6 left-6">
             {styleData[1].name}
           </p>
         </div>
-        <div className="relative col-span-3 bg-party min-h-[290px]  bg-cover rounded-xl">
+        <div className="relative col-span-3 bg-asics min-h-[290px] bg-bottom  bg-cover rounded-xl">
           <p className=" absolute text-3xl font-bold top-6 left-6">
             {styleData[2].name}
           </p>
         </div>
-        <div className="relative bg-gym col-span-2 min-h-[290px]  bg-cover rounded-xl">
+        <div className="relative bg-nike col-span-2 min-h-[290px]  bg-cover rounded-xl">
           <p className=" absolute text-3xl font-bold top-6 left-6">
             {styleData[3].name}
+          </p>
+        </div>
+        <div className="relative bg-altra col-span-5 min-h-[290px] bg-cover bg-bottom rounded-xl">
+          <p className=" absolute text-3xl font-bold top-6 left-6">
+            {styleData[4].name}
           </p>
         </div>
       </section>
