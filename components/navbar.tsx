@@ -60,6 +60,8 @@ export const Navbar = () => {
           <Link className="flex justify-start items-center gap-1" href="/">
             {/* <Logo />
             <p className="font-bold text-inherit">ACME</p> */}
+            <div className="bg-white p-2 rounded-sm">
+
             <Image
               width={160}
               height={30}
@@ -68,6 +70,7 @@ export const Navbar = () => {
               }
               alt="logo"
             />
+            </div>
           </Link>
         </NavbarBrand>
         <ul className=" sm:hidden flex gap-4 justify-start ml-2">
