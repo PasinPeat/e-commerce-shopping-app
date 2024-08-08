@@ -26,7 +26,14 @@ export async function fetchProductData({
           OR: [
             {
               name: {
-                contains: name,
+                contains: name.toLowerCase(),
+              },
+            },
+            {
+              brand: {
+                name: {
+                  contains: name.toLowerCase(),
+                },
               },
             },
           ],
