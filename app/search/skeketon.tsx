@@ -29,3 +29,14 @@ export function CardsSkeleton() {
       </>
     );
   }
+
+  export function CardsSkeletonHorizon() {
+    return (
+      <div className="flex flex-row gap-8 justify-between">
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+      </div>
+    );
+  }
