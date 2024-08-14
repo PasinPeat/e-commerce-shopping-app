@@ -1,10 +1,7 @@
 import { title, subtitle } from "@/components/primitives";
 import HomepageHero from "@/components/homepage/HomepageHero";
 import Brands from "@/components/homepage/Brands";
-import {
-  NewArrivals,
-  Topselling,
-} from "@/components/homepage/HomepageProducts";
+import { NewArrivals } from "@/components/homepage/HomepageProducts";
 import HomePageBrowse from "@/components/homepage/HomePageBrowse";
 import HomepageReview from "@/components/homepage/HomepageReview";
 import Footer from "@/components/homepage/Footer";
@@ -19,17 +16,16 @@ export default function Home() {
           <h1 className={title({ color: "yellow", size: "lg" })}>Your&nbsp;</h1>
           <h1 className={title({ color: "green", size: "lg" })}>LIMIT&nbsp;</h1>
           <br />
-          <h1 className={title({  size: "sm", class: "mt-4" })}>
+          <h1 className={title({ size: "sm", class: "mt-4" })}>
             One run can change your day, many runs can change your life.
           </h1>
           {/* <h2 className={subtitle({ class: "mt-4" })}>
             Beautiful, fast and modern React UI library.
           </h2> */}
-          <section className="mt-4">
-
-          <HomepageSlide />
-          </section>
         </div>
+          <section className="mt-4">
+            <HomepageSlide />
+          </section>
       </section>
       {/* <section>
         <HomepageHero />
@@ -38,8 +34,8 @@ export default function Home() {
         <Brands />
       </section>
       <section>
-        {/* <NewArrivals /> */}
-        <Topselling />
+        <NewArrivals />
+        {/* <Topselling /> */}
       </section>
       <section>
         <HomePageBrowse />

@@ -23,27 +23,27 @@ interface ProductData {
   description_id: number | null;
 }
 
+// export async function NewArrivals({}: Props) {
+//   const ProductData:ProductData[]  = await fetchNewArrivalProduct();
+
+//   return (
+//     <div className="my-4 flex flex-col  items-center gap-14">
+//       <h1 className="flex justify-center font-extrabold text-5xl my-8 ">
+//         New Arrival
+//       </h1>
+//       <TestSwipervertwo data={ProductData}  />
+//       <Link href="/search">
+//         <Button color="primary" className="w-[220px]">
+//           View All
+//         </Button>
+//       </Link>
+//     </div>
+//   );
+// }
+
 export async function NewArrivals({}: Props) {
-  const ProductData:ProductData[]  = await fetchNewArrivalProduct();
-  
-  return (
-    <div className="my-4 flex flex-col  items-center gap-14">
-      <h1 className="flex justify-center font-extrabold text-5xl my-8 ">
-        New Arrival
-      </h1>
-      <TestSwipervertwo data={ProductData}  />
-      <Link href="/search">
-        <Button color="primary" className="w-[220px]">
-          View All
-        </Button>
-      </Link>
-    </div>
-  );
-}
-
-export async function Topselling({}: Props) {
-  const products = await prisma.product.findMany();
-
+  // const products = await prisma.product.findMany();
+  const products = await fetchNewArrivalProduct();
   // console.log(products[0].imageUrl);
 
   if (!products) {
@@ -51,11 +51,20 @@ export async function Topselling({}: Props) {
   }
   return (
     <div className="my-4 sm:mt-8">
-      <h1 className="text-center font-extrabold text-5xl my-8 ">Top Selling</h1>
-      <section className="flex flex-nowrap gap-4 overflow-hidden">
-        {products[0].imageUrl.map((product, index) => (
-          <ProductCard key={index} src={product} name="test" price="12" />
-        ))}
+      <h1 className="text-center font-extrabold text-5xl my-8 ">
+        New Arrivals
+      </h1>
+      <section className="flex flex-nowrap justify-evenly gap-4 overflow-hidden">
+        {products &&
+          products.map((product, index) => (
+            <Link href={`/products/${product.slug}`} key={index}>
+              <ProductCard
+                src={product.imageUrl[0]}
+                name={product.name}
+                price={product.price}
+              />
+            </Link>
+          ))}
       </section>
     </div>
   );

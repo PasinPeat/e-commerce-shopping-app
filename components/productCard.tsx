@@ -4,7 +4,7 @@ import { Card, CardHeader, CardBody } from "@nextui-org/card";
 import Image from "next/image";
 type ImageProps = {
   src: string ;
-  name: string | undefined;
+  name: string | null;
   price: string | null;
 };
 

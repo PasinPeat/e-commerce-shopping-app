@@ -41,7 +41,7 @@ export default function PriceSlider() {
          size="md"
         //  radius="lg"
          showSteps={true}
-        step={200}
+        step={500}
         showTooltip={true}
         showOutline={true}
         disableThumbScale={true}

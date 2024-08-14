@@ -9,14 +9,27 @@ export default function LoginPage() {
   // const [errorMessage, dispatch] = useFormState(authenticate, undefined);
 
   return (
-    <form className="flex flex-col max-w-[300px] text-foreground">
-      <label htmlFor="email">Email:</label>
-      <input id="email" name="email" type="email" required />
-      <label htmlFor="password">Password:</label>
-      <input id="password" name="password" type="password" required />
-      <button className="bg-blue-600 p-2" formAction={login}>Log in</button>
-      <button className="bg-cyan-600 p-2" formAction={signup}>Sign up</button>
-    </form>
+    <div className="w-full h-full flex justify-center items-center">
+      <form className="flex flex-col justify-center w-[300px] h-[600px] text-foreground text-xl gap-5">
+        <div className=" inline-flex justify-between gap-3">
+          <label htmlFor="email">Email:</label>
+          <input className="w-3/4" id="email" name="email" type="email" required />
+        </div>
+        <div className=" inline-flex gap-3">
+          <label htmlFor="password">Password:</label>
+          <input className="w-3/4" id="password" name="password" type="password" required />
+        </div>
+        <div className="inline-flex justify-center gap-6 mt-9">
+
+        <button className="btn-login bg-blue-500 " formAction={login}>
+          Log in
+        </button>
+        <button className="btn-login bg-slate-200  dark:text-black" formAction={signup}>
+          Sign up
+        </button>
+        </div>
+      </form>
+    </div>
   );
 }
 
