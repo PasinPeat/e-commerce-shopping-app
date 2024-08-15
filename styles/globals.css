@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .bg-casual {
+    }
+
+    .btn-login{
+     @apply w-fit h-fit rounded-md p-2;
+    }
+  }
