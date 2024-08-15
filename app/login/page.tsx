@@ -13,11 +13,11 @@ export default function LoginPage() {
       <form className="flex flex-col justify-center w-[300px] h-[600px] text-foreground text-xl gap-5">
         <div className=" inline-flex justify-between gap-3">
           <label htmlFor="email">Email:</label>
-          <input className="w-3/4" id="email" name="email" type="email" required />
+          <input className="w-3/4 rounded-md border-2 border-blue-500" id="email" name="email" type="email" required />
         </div>
         <div className=" inline-flex gap-3">
           <label htmlFor="password">Password:</label>
-          <input className="w-3/4" id="password" name="password" type="password" required />
+          <input className="w-3/4 rounded-md border-2 border-blue-500" id="password" name="password" type="password" required />
         </div>
         <div className="inline-flex justify-center gap-6 mt-9">
 
