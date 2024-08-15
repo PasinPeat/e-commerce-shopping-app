@@ -15,16 +15,7 @@ import { Input } from "@nextui-org/input";
 import Image from "next/image";
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
-import {
-  TwitterIcon,
-  GithubIcon,
-  DiscordIcon,
-  HeartFilledIcon,
-  SearchIcon,
-  Logo,
-  CartIcon,
-  ProfileIcon,
-} from "@/components/icons";
+import { CartIcon, ProfileIcon, SearchIcon } from "@/components/icons";
 
 export const Navbar = () => {
   const searchInput = (

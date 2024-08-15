@@ -12,7 +12,7 @@ interface ProductData {
   price: string;
   id: number;
   SKU: string | null;
-  name: string | null;
+  name: string | undefined;
   brand_id: number | null;
   category_id: number | null;
   color: string | null;

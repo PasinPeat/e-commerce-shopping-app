@@ -68,7 +68,7 @@ export const HokaIcon: React.FC<IconSvgProps> = ({
 
 export const KailasIcon = () => {
   return (
-    <img src="https://kailasgear.com/cdn/shop/files/1e7ba8c253c7e58cffef3de8a8d982cc.png?v=1701223462&width=50" />
+    <img alt="kailasgear" src="https://kailasgear.com/cdn/shop/files/1e7ba8c253c7e58cffef3de8a8d982cc.png?v=1701223462&width=50" />
   );
 };
 
