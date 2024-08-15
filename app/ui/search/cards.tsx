@@ -21,7 +21,7 @@ export default async function CardWrapper({
             <Link href={`/products/${product.slug}`} key={index}>
               <ProductCard
                 src={product.imageUrl[0]}
-                name={product.name}
+                name={product.name?.toUpperCase()}
                 price={product.price}
               />
             </Link>

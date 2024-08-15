@@ -4,7 +4,7 @@ import React from "react";
 import { Accordion, AccordionItem } from "@nextui-org/react";
 
 type Props = {
-  desc: description[] | undefined;
+  desc: any;
 };
 
 interface description {
