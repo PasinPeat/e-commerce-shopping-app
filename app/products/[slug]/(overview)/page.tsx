@@ -8,13 +8,11 @@ import {
 import { CarouselSkeleton } from "@/app/ui/product/productSkeleton";
 import { CardsSkeletonHorizon } from "@/app/search/skeketon";
 import ProductDesc from "@/app/ui/product/productDesc";
-import ProductCarousel from "../../../ui/product/ProductCarousel";
+import ProductCarousel from "@/app/ui/product/ProductCarousel";
 import Productcolors from "@/app/ui/product/productcolors";
 import ProductStocks from "@/app/ui/product/productStocks";
 import OtherProducts from "@/app/ui/product/otherProducts";
 import Link from "next/link";
-
-
 
 async function ProductPage({ params }: { params: { slug: string } }) {
   const product = await fetchProductbySlug(params.slug);
