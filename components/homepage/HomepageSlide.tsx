@@ -16,23 +16,24 @@ const imgSlide = [
 function HomepageSlide() {
   return (
     <>
-      <div className="flex justify-center items-center w-[1280px] md:w-[1020px] sm:w-[640px]">
+      <div className=" relative h-full w-[1280px] md:w-[1020px] sm:w-[640px]">
         <Swiper
           autoplay={{
             delay: 2500,
             disableOnInteraction: false,
           }}
+          spaceBetween={30}
           navigation={true}
           pagination={{
             clickable: true,
           }}
           modules={[Pagination, Navigation]}
-          className="h-1/2"
+          className="h-1/2 w-full"
         >
           {imgSlide.map((pic, index) => (
             <SwiperSlide key={index}>
               <Image
-                className="w-full"
+                className="w-full block"
                 width={700}
                 height={700}
                 alt="running"
@@ -40,6 +41,15 @@ function HomepageSlide() {
               />
             </SwiperSlide>
           ))}
+          {/* <SwiperSlide>
+            <Image
+              className="w-full block"
+              width={700}
+              height={700}
+              alt="running"
+              src={imgSlide[0]}
+            />
+          </SwiperSlide> */}
         </Swiper>
       </div>
     </>

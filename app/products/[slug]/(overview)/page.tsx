@@ -6,13 +6,15 @@ import {
 } from "@/lib/fetchData";
 // import prisma from "@/lib/db";
 import { CarouselSkeleton } from "@/app/ui/product/productSkeleton";
-import { CardsSkeleton, CardsSkeletonHorizon } from "@/app/search/skeketon";
+import { CardsSkeletonHorizon } from "@/app/search/skeketon";
 import ProductDesc from "@/app/ui/product/productDesc";
 import ProductCarousel from "../../../ui/product/productCarousel";
 import Productcolors from "@/app/ui/product/productcolors";
 import ProductStocks from "@/app/ui/product/productStocks";
 import OtherProducts from "@/app/ui/product/otherProducts";
 import Link from "next/link";
+
+
 
 async function ProductPage({ params }: { params: { slug: string } }) {
   const product = await fetchProductbySlug(params.slug);

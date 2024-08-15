@@ -142,7 +142,7 @@ export async function fetchNewArrivalProduct() {
   try {
     const data = await prisma.product.findMany({
       distinct: ["name"],
-      take: 4,
+      take: 5,
       orderBy: {
         id: "asc",
       },

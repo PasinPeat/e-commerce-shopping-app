@@ -19,23 +19,19 @@ export default function Home() {
           <h1 className={title({ size: "sm", class: "mt-4" })}>
             One run can change your day, many runs can change your life.
           </h1>
-          {/* <h2 className={subtitle({ class: "mt-4" })}>
-            Beautiful, fast and modern React UI library.
-          </h2> */}
+          
         </div>
+      </section>
           <section className="mt-4">
             <HomepageSlide />
           </section>
-      </section>
-      {/* <section>
-        <HomepageHero />
-      </section> */}
+      
       <section>
         <Brands />
       </section>
       <section>
         <NewArrivals />
-        {/* <Topselling /> */}
+        
       </section>
       <section>
         <HomePageBrowse />

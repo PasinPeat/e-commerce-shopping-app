@@ -23,28 +23,9 @@ interface ProductData {
   description_id: number | null;
 }
 
-// export async function NewArrivals({}: Props) {
-//   const ProductData:ProductData[]  = await fetchNewArrivalProduct();
-
-//   return (
-//     <div className="my-4 flex flex-col  items-center gap-14">
-//       <h1 className="flex justify-center font-extrabold text-5xl my-8 ">
-//         New Arrival
-//       </h1>
-//       <TestSwipervertwo data={ProductData}  />
-//       <Link href="/search">
-//         <Button color="primary" className="w-[220px]">
-//           View All
-//         </Button>
-//       </Link>
-//     </div>
-//   );
-// }
 
 export async function NewArrivals({}: Props) {
-  // const products = await prisma.product.findMany();
   const products = await fetchNewArrivalProduct();
-  // console.log(products[0].imageUrl);
 
   if (!products) {
     return <div> no products</div>;
