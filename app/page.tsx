@@ -36,10 +36,7 @@ export default function Home() {
       <section>
         <HomePageBrowse />
       </section>
-      <section>
-        <HomepageReview />
-      </section>
-      <footer>{/* <Footer /> */}</footer>
+
     </>
   );
 }

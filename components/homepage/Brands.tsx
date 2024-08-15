@@ -15,14 +15,10 @@ function Brands({}: Props) {
     <>
       <div className="min-h-[122px] bg-black dark:bg-white flex flex-row md:flex-wrap gap-20 md:gap-8 p-8 justify-center items-center">
         <HokaIcon />
-        <KailasIcon />
+        {/* <KailasIcon /> */}
         <AsicsIcon />
         <AltraIcon />
-        {/* <PradaIcon /> */}
-        {/* <ZaraIcon /> */}
-        {/* <GucciIcon /> */}
-        <NikeIcon />
-        {/* <CalvinkleinIcon /> */}
+        {/* <NikeIcon /> */}
       </div>
     </>
   );
