@@ -19,11 +19,13 @@ export default async function CardWrapper({
         {products &&
           products.map((product, index) => (
             <Link href={`/products/${product.slug}`} key={index}>
-              <ProductCard
-                src={product.imageUrl[0]}
-                name={product.name?.toUpperCase()}
-                price={product.price}
-              />
+              {product && product.name && (
+                <ProductCard
+                  src={product.imageUrl[0]}
+                  name={product.name.toUpperCase()}
+                  price={product.price}
+                />
+              )}
             </Link>
           ))}
       </div>
