@@ -1,12 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import gucciLogo from "../../public/navicon/gucciLogo.svg";
+
 import {
-  CalvinkleinIcon,
-  GucciIcon,
-  PradaIcon,
   HokaIcon,
-  ZaraIcon,
   KailasIcon,
   AsicsIcon,
   AltraIcon,

@@ -6,14 +6,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Image from 'next/image'
 
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
-import 'swiper/css';
-import 'swiper/css/free-mode';
-import 'swiper/css/navigation';
-import 'swiper/css/thumbs';
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
 
 import "./styles.css";
 
-export default function productCarousel({
+export default function ProductCarousel({
   imgUrl,
 }: {
   imgUrl: string[] | undefined;

@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { RadioGroup, Radio, useRadio, RadioProps, cn } from "@nextui-org/react";
+import { RadioGroup, Radio, cn } from "@nextui-org/react";
 
 interface stock {
   id: number;

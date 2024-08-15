@@ -1,9 +1,9 @@
 // import React from "react";
 import ProductCard from "../productCard";
-import { Button } from "@nextui-org/button";
-import { ProductData } from "@/lib/productsample";
+
+
 import { fetchNewArrivalProduct } from "@/lib/fetchData";
-import { TestSwipervertwo } from "../slidervertwo";
+
 import prisma from "@/lib/db";
 import Link from "next/link";
 

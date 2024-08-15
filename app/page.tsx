@@ -1,10 +1,10 @@
-import { title, subtitle } from "@/components/primitives";
-import HomepageHero from "@/components/homepage/HomepageHero";
+import { title } from "@/components/primitives";
+
 import Brands from "@/components/homepage/Brands";
 import { NewArrivals } from "@/components/homepage/HomepageProducts";
 import HomePageBrowse from "@/components/homepage/HomePageBrowse";
 import HomepageReview from "@/components/homepage/HomepageReview";
-import Footer from "@/components/homepage/Footer";
+
 import HomepageSlide from "@/components/homepage/HomepageSlide";
 
 export default function Home() {
