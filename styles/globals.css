@@ -9,4 +9,8 @@
     .btn-login{
      @apply w-fit h-fit rounded-md p-2;
     }
+
+    .p-brand {
+      @apply absolute text-3xl font-bold top-6 left-6 drop-shadow-xl
+    }
   }

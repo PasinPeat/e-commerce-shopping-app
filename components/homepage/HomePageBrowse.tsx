@@ -51,7 +51,7 @@ async function HomePageBrowse({}: Props) {
           onClick={() => addQueryParam(styleData[0].name)}
         >
           <div className=" bg-hoka min-h-[290px]  bg-cover  rounded-xl">
-            <p className=" absolute text-3xl font-bold top-6 left-6">
+            <p className="p-brand">
               {styleData[0].name}
             </p>
           </div>
@@ -60,8 +60,8 @@ async function HomePageBrowse({}: Props) {
           className="relative col-span-3"
           onClick={() => addQueryParam(styleData[1].name)}
         >
-          <div className=" bg-kailas min-h-[290px] bg-left bg-cover rounded-xl">
-            <p className=" absolute text-3xl font-bold top-6 left-6">
+          <div className=" bg-kailas min-h-[290px] bg-left bg-cover rounded-xl ">
+            <p className="p-brand">
               {styleData[1].name}
             </p>
           </div>
@@ -71,7 +71,7 @@ async function HomePageBrowse({}: Props) {
           onClick={() => addQueryParam(styleData[2].name)}
         >
           <div className=" bg-asics min-h-[290px] bg-bottom  bg-cover rounded-xl">
-            <p className=" absolute text-3xl font-bold top-6 left-6">
+            <p className="p-brand">
               {styleData[2].name}
             </p>
           </div>
@@ -81,7 +81,7 @@ async function HomePageBrowse({}: Props) {
           onClick={() => addQueryParam(styleData[3].name)}
         >
           <div className=" bg-nike  min-h-[290px]  bg-cover rounded-xl">
-            <p className=" absolute text-3xl font-bold top-6 left-6">
+            <p className="p-brand">
               {styleData[3].name}
             </p>
           </div>
@@ -91,7 +91,7 @@ async function HomePageBrowse({}: Props) {
           onClick={() => addQueryParam(styleData[4].name)}
         >
           <div className=" bg-altra  min-h-[290px] bg-cover bg-bottom rounded-xl">
-            <p className=" absolute text-3xl font-bold top-6 left-6">
+            <p className="p-brand">
               {styleData[4].name}
             </p>
           </div>

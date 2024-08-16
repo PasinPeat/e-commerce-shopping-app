@@ -24,7 +24,7 @@ const ProductCard = (props: ImageProps) => {
           />
         </CardHeader>
         <CardBody className="overflow-visible py-2">
-          <h4 className="font-bold text-medium">{props.name}</h4>
+          <h4 className="font-bold text-medium capitalize">{props.name}</h4>
           <p className="text-tiny uppercase font-bold mt-2">{props.price}</p>
         </CardBody>
       </Card>

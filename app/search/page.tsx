@@ -18,7 +18,7 @@ export default async function Page({
   return (
     <main>
       <h1 className="mb-4 text-xl md:text-2xl">Results</h1>
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-6 justify-center lg:grid-cols-4 md:grid md:auto-col-auto md:place-content-center" >
         <Suspense fallback={<CardsSkeleton />}>
           <CardWrapper name={name}  min={min} max={max}/>
         </Suspense>

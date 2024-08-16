@@ -8,37 +8,14 @@ import {
   NavbarMenuItem,
 } from "@nextui-org/navbar";
 
-import { Kbd } from "@nextui-org/kbd";
 import { Link } from "@nextui-org/link";
-import { Input } from "@nextui-org/input";
 
 import Image from "next/image";
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
-import { CartIcon, ProfileIcon, SearchIcon } from "@/components/icons";
+import { CartIcon, ProfileIcon } from "@/components/icons";
 
 export const Navbar = () => {
-  const searchInput = (
-    <Input
-      aria-label="Search"
-      classNames={{
-        inputWrapper: "bg-default-100",
-        input: "text-sm",
-      }}
-      endContent={
-        <Kbd className="hidden lg:inline-block" keys={["command"]}>
-          K
-        </Kbd>
-      }
-      labelPlacement="outside"
-      placeholder="Search..."
-      startContent={
-        <SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
-      }
-      type="search"
-    />
-  );
-
   return (
     <NextUINavbar maxWidth="xl" position="sticky">
       {/*open ------------ toggle + logo + navItem */}
@@ -85,7 +62,6 @@ export const Navbar = () => {
         className="sm:hidden flex sm:basis-1/5 basis-full"
         justify="end"
       >
-        <NavbarItem className="sm:hidden flex">{searchInput}</NavbarItem>
         <ThemeSwitch />
         <Link isExternal aria-label="Github" href={siteConfig.links.github}>
           <CartIcon className="text-default-500 mt-3 ml-2" />
@@ -100,7 +76,7 @@ export const Navbar = () => {
         {/* <Link isExternal aria-label="Github" href={siteConfig.links.github}>
           <GithubIcon className="text-default-500" />
         </Link> */}
-        <NavbarItem className="hidden sm:flex">{searchInput}</NavbarItem>
+
         <ThemeSwitch />
         <Link isExternal aria-label="Github" href={siteConfig.links.github}>
           <CartIcon className="text-default-500 mt-3 ml-2" />
@@ -112,7 +88,6 @@ export const Navbar = () => {
 
       {/* show inside toggle menu */}
       <NavbarMenu>
-        {/* {searchInput} */}
         <div className="mx-4 mt-2 flex flex-col gap-2">
           {siteConfig.navMenuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
@@ -124,7 +99,7 @@ export const Navbar = () => {
                       ? "danger"
                       : "foreground"
                 }
-                href="#"
+                href={item.href}
                 size="lg"
               >
                 {item.label}

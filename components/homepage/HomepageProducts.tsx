@@ -35,7 +35,7 @@ export async function NewArrivals({}: Props) {
       <h1 className="text-center font-extrabold text-5xl my-8 ">
         New Arrivals
       </h1>
-      <section className="flex flex-nowrap justify-evenly gap-4 overflow-hidden">
+      <section className="flex flex-nowrap justify-evenly gap-4 overflow-hidden md:flex-wrap">
         {products &&
           products.map((product, index) => (
             <Link href={`/products/${product.slug}`} key={index}>

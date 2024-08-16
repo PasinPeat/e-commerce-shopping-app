@@ -15,14 +15,14 @@ export default async function CardWrapper({
 
   return (
     <>
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-4 gap-4 md:flex md:flex-wrap  md:justify-center sm:flex sm:flex-col sm:justify-center">
         {products &&
           products.map((product, index) => (
             <Link href={`/products/${product.slug}`} key={index}>
               {product && product.name && (
                 <ProductCard
                   src={product.imageUrl[0]}
-                  name={product.name.toUpperCase()}
+                  name={product.name}
                   price={product.price}
                 />
               )}
